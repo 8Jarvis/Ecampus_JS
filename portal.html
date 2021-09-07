@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+   
+    <style>
+        body {
+            font-size: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            width:30%;
+        }
+
+        /* .chartBox {
+            box-sizing: content-box;
+        } */
+    </style>
+
+</head>
+<body>
+    <h1>Marks Portal</h1>
+    <form action="" name="marks" method="GET" onsubmit="return check_marks()">
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Course Name</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text"  name="" id="sub1_code"></td>
+                    <td><input type="text" id="sub1" onchange="updateChart()"></input></td>
+                    <td><input type="text" name="" id="sub1_marks" onchange="updateChart()" value=""
+                    placeholder="Enter Marks"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="" id="sub2_code"></td>
+                    <td><input type="text" id="sub2" onchange="updateChart()"></input></td>
+                    <td><input type="text" name="" id="sub2_marks" onchange="updateChart()" value=""
+                    placeholder="Enter Marks"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="" id="sub3_code"></td>
+                    <td><input type="text" id="sub3" onchange="updateChart()"></label></td>
+                    <td><input type="text" name="" id="sub3_marks" onchange="updateChart()" value=""
+                    placeholder="Enter Marks"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </form>
+
+    <div class="container" offset-3 >
+        <div class="row">
+            <div class="col-6">
+                <canvas id="myChart" class="chartBox"></canvas>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+    </script>
+
+     <script>
+         var url = window.location.href;
+         console.log(url);
+         
+         const urlParams = new URLSearchParams(url);
+         console.log(urlParams);
+
+         console.log(urlParams.values);
+         
+
+        
+
+         for (const value of urlParams.values()) {
+             console.log(value);
+             if (value == "elec" || value == "extc" || value == "cs") {
+                 stream = value;
+                 
+                 break;
+             }
+         }
+        //  document.getElementById("stream").innerHTML = stream;
+
+         if (stream == "elec") {
+             document.getElementById("sub1_code").value = "1";
+             document.getElementById("sub1").value = "VLSI";
+             document.getElementById("sub2_code").value = "2";
+             document.getElementById("sub2").value = "Digital Electronics";
+             document.getElementById("sub3_code").value = "3";
+             document.getElementById("sub3").value = "Analog Electronics";
+         } else if (stream == "extc") {
+             document.getElementById("sub1_code").value = "1";
+             document.getElementById("sub1").value = "radar";
+             document.getElementById("sub2_code").value = "2";
+             document.getElementById("sub2").value = "vlsi";
+             document.getElementById("sub3_code").value = "3";
+             document.getElementById("sub3").value = "mobile";
+         } else if(stream == "cs"){
+             document.getElementById("sub1_code").value = "1";
+             document.getElementById("sub1").value = "big data";
+             document.getElementById("sub2_code").value = "2";
+             document.getElementById("sub2").value = "dbms";
+             document.getElementById("sub3_code").value = "3";
+             document.getElementById("sub3").value = "os";
+         }
+
+         function check_marks() {
+             let sub1 = document.forms["marks"]["sub1"].value;
+             let sub2 = document.forms["marks"]["sub2"].value;
+             let sub3 = document.forms["marks"]["sub3"].value;
+             let marks = [sub1, sub2, sub3];
+             for (let i = 0; i < marks.length; i++) {
+                 if (marks[i] < 0 || marks[i] > 100) {
+                     alert("Invalid!!");
+                     return false;
+                 }
+             }
+         }
+
+
+         //------CANVAS------//
+
+         var marks1 = document.getElementById('sub1_marks');
+         var marks2 = document.getElementById('sub2_marks');
+         var marks3 = document.getElementById('sub3_marks');
+
+         var subj1 = document.getElementById('sub1');
+         var subj2 = document.getElementById('sub2');
+         var subj3 = document.getElementById('sub3');
+
+         var ctx = document.getElementById('myChart').getContext('2d');
+         var chart = new Chart ( ctx , {
+
+         type: "bar" ,
+
+         data : {
+         labels : [subj1.value , subj2.value , subj3.value] ,
+         datasets: [{
+         label : 'Marksheet' ,
+         backgroundColor : ['red' , 'blue' , 'green'] ,
+         borderColor :['red' ,'blue' , 'green'],
+         borderWidth : 1 ,
+         data : [marks1.value , marks2.value , marks3.value]
+
+         }]
+         },
+
+         options: {
+         legend: false
+         }
+         });
+
+         function updateChart() {
+         var updateValues = [marks1.value , marks2.value , marks3.value];
+         chart.data.datasets[0].data = updateValues;
+
+         var updatesub = [subj1.value , subj2.value , subj3.value];
+         chart.data.labels = updatesub;
+
+         chart.update();
+
+         }
+     </script>
+
+    
+</body>
+</html>
