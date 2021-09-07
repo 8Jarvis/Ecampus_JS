@@ -1,0 +1,51 @@
+body{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7),rgba(255, 255, 255, 0.7))  , url(bg.jfif);
+    padding: 5%;
+    height: auto;
+    width: auto;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat; 
+}
+.formdesign{
+    font-size:18px;
+    
+}
+.formdesign input{
+    width: 45%;
+    padding: 10px 10px;
+    border: 1px solid blue;
+    /* margin-left: 5px; */
+    margin: 14px;
+    border-radius: 4px;
+    font-size: 15px ;
+}
+.nameerror{
+    color: red;
+}
+/*demo*/
+.well{
+    box-shadow: 3px 2px 5px #555;
+    margin-top: 50px;
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+.formdesign label{
+    display: block;
+}
+.formdesign select{
+    width: 45%;
+    padding: 10px 10px;
+    border: 1px solid blue;
+    margin: 14px;
+    border-radius: 4px;
+    font-size: 15px;
+}
+.btn{
+    background: lightblue;
+    border:2px solid blue;
+    padding:10px 35px;
+    color:#000;
+    transition: 0.4s;
+    border-radius: 50px;
+}
