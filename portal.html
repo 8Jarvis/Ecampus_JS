@@ -6,24 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
     <style>
         body {
+            padding: 3%;
             font-size: 20px;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(bg.jfif);
+            height: auto;
+            width: auto;
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
 
         h1 {
             text-align: center;
-            width: 30%;
+            padding-bottom: 2%;
         }
+
+        .center{
+            margin-left: auto;
+            margin-right: auto;
+
+        }
+
+        .bt {
+            background: lightblue;
+            border: 2px solid blue;
+            padding: 10px 35px;
+            color: #000;
+            transition: 0.4s;
+            border-radius: 50px;
+        }
+
+        /* .chartBox {
+            box-sizing: content-box;
+        } */
     </style>
 
 </head>
 
-<body>
+<body class = "text-center" >
     <h1>Marks Portal</h1>
 
-    <table>
+    <table class="center" >
         <thead>
             <tr>
                 <th>Code</th>
@@ -50,9 +78,9 @@
         </tbody>
     </table>
 
-    <button class="b1" onclick="entermarks()">Save Marks</button>
+    <button class="bt" onclick="entermarks()">Save Marks</button>
     <form action="./graph.html">
-        <button>Next</button></form>
+        <button class = "bt" >Next</button></form>
 
 
 
