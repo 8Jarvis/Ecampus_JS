@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        .chart {
+            display: flex;
+            justify-content: center;
+
+        }
+    </style>
+
+
+    <script>
+        let mBar1 = JSON.parse(localStorage["v1"]);
+        let mBar2 = JSON.parse(localStorage["v2"]);
+        let mBar3 = JSON.parse(localStorage["v3"]);
+        let m1=Number(mBar1);
+        let m2=Number(mBar2);
+        let m3=Number(mBar3);
+        // let mBar = [85, 90, 95, 85]
+
+        let strm = JSON.parse(localStorage["stream"]);
+
+        window.onload = function () {
+            if (strm == "elec") {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    theme: "light2",
+                    title: {
+                        text: "Marks Obtained"
+                    },
+                    axisY: {
+                        title: "Marks Obtained",
+                        minimum: 30,
+                        maximum: 100
+
+                    },
+                    axisX: {
+                        title: "Subjects"
+                    },
+                    data: [{
+
+                        type: "column",
+                        yValueFormatString: "#,##0.0#\"%\"",
+                        dataPoints: [
+
+                            { label: "VLSI", y: m1 },
+                            { label: "Digital Electronics", y: m2},
+                            { label: "Analog Electronics", y: m3 },
+                            // { label: "Python", y: mBar[3] }
+
+                        ]
+                    }]
+                });
+                chart.render();
+
+            }
+
+            if (strm == "extc") {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    theme: "light2",
+                    title: {
+                        text: "Marks Obtained"
+                    },
+                    axisY: {
+                        title: "Marks Obtained",
+                        minimum: 30,
+                        maximum: 100
+
+                    },
+                    axisX: {
+                        title: "Subjects"
+                    },
+                    data: [{
+
+                        type: "column",
+                        yValueFormatString: "#,##0.0#\"%\"",
+                        dataPoints: [
+
+                            { label: "Radar", y: m1 },
+                            { label: "VLSI", y: m2 },
+                            { label: "Mobile", y: m3 }
+
+                        ]
+                    }]
+                });
+                chart.render();
+
+            }
+
+
+            if (strm == "cs") {
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    animationEnabled: true,
+                    theme: "light2",
+                    title: {
+                        text: "Marks Obtained"
+                    },
+                    axisY: {
+                        title: "Marks Obtained",
+                        minimum: 30,
+                        maximum: 100
+
+                    },
+                    axisX: {
+                        title: "Subjects"
+                    },
+                    data: [{
+
+                        type: "column",
+                        yValueFormatString: "#,##0.0#\"%\"",
+                        dataPoints: [
+
+                            { label: "Big Data", y: m1 },
+                            { label: "DBMS", y: m2 },
+                            { label: "Operating System", y: m3 }
+
+                        ]
+                    }]
+                });
+                chart.render();
+
+            }
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <div class="chart">
+        <div id="chartContainer" style="height: 370px; width: 60%; "></div>
+    </div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+
+</html>
