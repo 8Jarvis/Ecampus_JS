@@ -22,7 +22,7 @@ function validateForm(){
     }
 
     var email=document.forms['myForm']["studentEmail"].value;
-    if(email.length>20){
+    if(email.length>30){
         seterror("email", "*Email length is too long");
         returnval = false;
     }
